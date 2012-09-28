@@ -1,0 +1,32 @@
+/*
+ * koansys_default.css_t
+ *
+ * Sphinx stylesheet
+ *  - koansys theme based off of the default style.
+ *
+ * :copyright: Copyright 2012 by Koansys, LLC
+ * :license: BDS, see LICENSE for details.
+ *
+ */
+
+@import url('default.css');
+body {
+    background-color: #94bd5e;
+}
+
+div.document {
+    background-color: #dad3bd;
+}
+
+div.sphinxsidebar h3, h4, h5, a {
+    color: #333366 !important;
+}
+
+div.related {
+    color: highlight !important;
+    background-color: #597138;
+}
+
+div.related a {
+    color: highlight !important;
+}
