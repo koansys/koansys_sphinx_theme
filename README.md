@@ -3,7 +3,7 @@ koansys_sphinx_theme
 
 Sphinx theme for Koansys Projects
 
-This repository contains Pylons themes for Pylons related projects.
+This repository contains Sphinx themes for Koansys related projects.
 To use a theme in your Sphinx documentation, follow this guide:
 
 1. Put this directory as _themes into your docs folder.
