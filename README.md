@@ -37,13 +37,14 @@ The following themes exist:
 Installation for Development Purposes
 -------------------------------------
 
+    $ git clone git@github.com:koansys/koansys_sphinx_theme.git
     $ mkdir test_docs && cd test_docs
-    $ virtualenv .
-    $ source bin/activate
+    $ virtualenv env
+    $ source env/bin/activate
     $ pip install sphinx
     $ mkdir docs && cd docs
     $ sphinx-quickstart
-    $ git clone git@github.com:koansys/koansys_sphinx_theme.git
+    $ ln -s ../../koansys_sphinx_theme/ koansys_sphinx_theme
 
 Add to your `conf.py` file (Line 94):
 
@@ -56,6 +57,6 @@ Now the `Quickstart` docs should be themed.
     $ make clean html
     $ open _build/html/index.html
 
-You should be able to change the `_theme/koansys` files and run `make clean html` again to see changes.
+Make changes in the `koansys_sphinx_theme` repo like normal, and changes should transfer over.
 
-NOTE: `test_docs` is not the git repository, `_themes/` is. When using Git Tower, point it at the `_themes` folder.
+NOTE: `test_docs` is not the git repository.
