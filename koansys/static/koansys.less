@@ -9,11 +9,12 @@
 	@black: #000000;
 
 ///Custom Colors:
-	@background: #b8b7b7;
-	@contentBG: #7c7c7e;
+	@background: #7c7c7e;
+	@contentBG: #cdcccc;
+	@contentBorder: #757575;
 	
 ///Images:
-	@kdoc_banner: "images/kdoc_banner.png";
+	@koansys_header: "images/koansys_header.png";
 	@navHeader: "images/navigate_header.png";
 	
 ///Fonts:
@@ -56,73 +57,81 @@ body {
     margin: 0;
 }
 
-#headerWrapper {
-	margin: 0 auto;
-	width: 1100px;
-	background-color: @contentBG;
-	
-	#banner {
-		background: url("@{kdoc_banner}") no-repeat;
-		width: 939px;
-		height: 176px;
-		margin: 0 auto;
+#pageWrapper {
+	-webkit-box-shadow: 0px 0px 4px 4px rgba(50, 50, 50, 0.5);
+    -moz-box-shadow: 0px 0px 4px 4px rgba(50, 50, 50,  0.5);
+    box-shadow: 0px 0px 4px 4px rgba(50, 50, 50,  0.5);
+    width: 1100px;
+    margin: 0 auto;
+    
+	#headerWrapper {
+		width: 1100px;
+		background-color: @contentBG;
+		
+		#banner {
+			background: url("@{koansys_header}") no-repeat;
+			width: 1100px;
+			height: 250px;
+			margin: 0 auto;
+		}
 	}
-}
-
-
-#bodyWrapper {
-	margin: 0 auto;
-	width: 1100px;
-	background-color: @contentBG;
 	
-	#bodyContainer {
-		width: 936px;
-		padding: 25px;
-		margin: 0 auto;
-			
-		/**Navigation**/
-		#navigationWrapper {
-			font-size: 20px;
-			font-weight: normal;
-			width: 700px;
-			overflow: hidden;
-			font-family: "headerText";
-			
-			#navHeader {
-				float: left;
-				width: 101px;
-				height: 32px;
-				background: url("@{navHeader}") no-repeat;
-				padding-right: 15px;
-			}
-			
-			ul {
-				margin-top: 4px;
-				padding: 0;
-				float: left;
-				min-width: 350px;
-				width: auto !important;
-				list-style-type: none;
+
+	#bodyWrapper {
+		width: 1098px;
+		margin: -1px 0 0;
+		background-color: @contentBG;
+		border: 1px solid @contentBorder;
+	
+		#bodyContainer {
+			width: 936px;
+			padding: 25px;
+			margin: 0 auto;
 				
-				li {
+			/**Navigation**/
+			#navigationWrapper {
+				font-size: 20px;
+				font-weight: normal;
+				width: 700px;
+				overflow: hidden;
+				font-family: "headerText";
+				
+				#navHeader {
 					float: left;
-					padding-right: 10px;
+					width: 101px;
+					height: 32px;
+					background: url("@{navHeader}") no-repeat;
+					padding-right: 15px;
+				}
+				
+				ul {
+					margin-top: 4px;
+					padding: 0;
+					float: left;
+					min-width: 350px;
+					width: auto !important;
+					list-style-type: none;
 					
-					a:link,
-					a:active,
-					a:visited {
-						text-decoration: none;
-						color: @gray-level4;
-					}
-					
-					a:hover {
-						text-decoration: underline;
+					li {
+						float: left;
+						padding-right: 10px;
+						
+						a:link,
+						a:active,
+						a:visited {
+							text-decoration: none;
+							color: @gray-level4;
+						}
+						
+						a:hover {
+							text-decoration: underline;
+						}
 					}
 				}
+					
 			}
-				
+	
 		}
-
 	}
 }
-
+	
