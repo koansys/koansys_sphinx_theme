@@ -118,6 +118,9 @@
 
     {%- for scriptfile in script_files %}
    		<script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
+   		 <!--[if lt IE 9]>
+			<script src="static/js/html5shiv.js"></script>
+		<![endif]-->
     {%- endfor %}
 
 {%- endmacro %}
@@ -126,6 +129,7 @@
 {%- macro css() %}
     <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}" type="text/css" />
     <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
+
     {%- for cssfile in css_files %}
     <link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
     {%- endfor %}
@@ -193,11 +197,11 @@
 	</head>
 
 	<body>
-		<div id="headerWrapper">
-			<div id="banner"></div>
-		</div>
-
-		<div id="bodyWrapper">
+	<div id="bodyWrapper" class="container">
+			<div id="headerWrapper" class="row">
+				<div id="banner"></div>
+			</div>
+	
 			<div id="bodyContainer">
 				{%- block header %}{% endblock %}
 
