@@ -11,12 +11,26 @@
 	@black: #000000;
 
 ///Custom Colors:
-	@background: #b8b7b7;
-	@contentBG: #7c7c7e;
+	@background: #5a5959;
+	@footerBG: #787878;
+	@footerText: #2D2D2D;
+	@contentBG: #acabab;
+	@bodyText: #383737;
 	
+	@bottomNav: #261f30;
+	@topNav: #423b4d;
+	@navBorder: #372f42;
+	@nav_bottomBtn: #393343;
+	@nav_topBtn: #564D64;
+	@nav_btnBorder: #474747l;
+
+	@green-accent: #8cc63f;
+	@purple-accent: #483F54;
+
 ///Images:
 	@kdoc_banner: "images/kdoc_banner.png";
 	@navHeader: "images/navigate_header.png";
+	@bullet: "images/bullet.png";
 	
 ///Fonts:
 @font-face {
@@ -55,21 +69,26 @@
 body {
     background-color: @background;
     font-family: "bodyText";
+    color: @bodyText;
     margin: 0;
+    font-size: 1em;
 }
 
-#bodyWrapper {
+#bodyWrapper.container {
 	margin: 0 auto;
 	background-color: @contentBG;
-	padding: 0 40px 25px 80px;
+	padding: 0;
+	-webkit-box-shadow: 0px 0px 4px 4px rgba(50, 50, 50, 0.5);
+    -moz-box-shadow: 0px 0px 4px 4px rgba(50, 50, 50,  0.5);
+    box-shadow: 0px 0px 4px 4px rgba(50, 50, 50,  0.5);
 	
 	#headerWrapper {
 		margin: 0 auto;
-		background-color: @contentBG;
+		padding: 0 60px 0 0;
 		
 		#banner {
-			background: url("@{kdoc_banner}") no-repeat;
-			height: 176px;
+			background: url("@{kdoc_banner}") no-repeat @contentBG;
+			height: 249px;
 			margin: 0 auto;
 		}
 	}
@@ -77,50 +96,182 @@ body {
 	
 	#bodyContainer {
 		margin: 0 auto;
+		
+		/**NAVIGATION**/
+		#primary-nav-wrapper {    
+			margin: 0;
 			
-		/**Navigation**/
-		#navigationWrapper {
-			font-size: 20px;
-			font-weight: normal;
-			width: 700px;
-			overflow: hidden;
-			font-family: "headerText";
-			
-			#navHeader {
-				float: left;
-				width: 101px;
-				height: 32px;
-				background: url("@{navHeader}") no-repeat;
-				padding-right: 15px;
-			}
-			
-			ul {
-				margin-top: 4px;
-				padding: 0;
-				float: left;
-				min-width: 350px;
-				width: auto !important;
-				list-style-type: none;
+			.navbar-inner {	
+				padding: 5px 20px;
+				background-image:-moz-linear-gradient(top, @topNav, @bottomNav);
+				background-image:-webkit-gradient(linear, 0 0, 0 100%, from(@topNav), to(@bottomNav));
+				background-image:-webkit-linear-gradient(top, @topNav, @bottomNav);
+				background-image:-o-linear-gradient(top, @topNav, @bottomNav);
+				background-image:linear-gradient(to bottom, @topNav, @bottomNav);
+				filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff423b4d', endColorstr='#ff261f30', GradientType=0);
+				border:1px solid @navBorder;
+				-webkit-border-radius:0px;
+				-moz-border-radius:0px;
+				border-radius:0px;
+				-webkit-box-shadow:0 0 0 0;
+				-moz-box-shadow:0 0 0 0;
+				box-shadow:0 0 0 0;
 				
-				li {
-					float: left;
-					padding-right: 10px;
+				#primary-nav {
+					margin: 8px 0 0;
+					padding: 0 14px;
+					overflow: hidden;
 					
-					a:link,
-					a:active,
-					a:visited {
-						text-decoration: none;
-						color: @gray-level4;
+					ul {
+						list-style-type: none;
+						
+						li {
+							line-height: 7px;
+							margin: 0 0 0 10px;
+							text-align: left;
+							
+							a:link,
+							a:active,
+							a:visited {
+								color: @white;
+								font-size: 24px;
+								font-family: "headerText";
+								font-weight: normal;
+								text-shadow: 0 0 0 transparent;
+							}
+							
+							a:hover {
+								color: @green-accent;
+								text-decoration: none;
+							}
+								
+						}
 					}
+				}
+				
+				/**In Collapsed State**/
+				.nav-collapse.in {
+					ul {
+						li {
+							padding: 2px 0;
+	
+							a:hover {
+								background-color: transparent;
+							}
+						}
+					}
+				}
+	
+				
+				.btn-navbar {
+					background-color:@nav_topBtn;
+					background-image:-moz-linear-gradient(top, @nav_topBtn, @nav_bottomBtn);
+					background-image:-webkit-gradient(linear, 0 0, 0 100%, from(@nav_topBtn), to(@nav_bottomBtn));
+					background-image:-webkit-linear-gradient(top, @nav_topBtn, @nav_bottomBtn);
+					background-image:-o-linear-gradient(top, @nav_topBtn, @nav_bottomBtn);
+					background-image:linear-gradient(to bottom, @nav_topBtn, @nav_bottomBtn);
+					background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff666666', endColorstr='#ff545252', GradientType=0);
+					border-color:@nav_btnBorder;
 					
-					a:hover {
-						text-decoration: underline;
+					&:hover{
+						background-color:@nav_topBtn;
+						background-image:-moz-linear-gradient(top, @nav_bottomBtn, @nav_topBtn);
+						background-image:-webkit-gradient(linear, 0 0, 0 100%, from(@nav_bottomBtn), to(@nav_topBtn));
+						background-image:-webkit-linear-gradient(top, @nav_bottomBtn, @nav_topBtn);
+						background-image:-o-linear-gradient(top, @nav_bottomBtn, @nav_topBtn);
+						background-image:linear-gradient(to bottom, @nav_bottomBtn, @nav_topBtn);
+						background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff545252', endColorstr='#ff666666', GradientType=0);
+						border-color:@nav_btnBorder;
 					}
 				}
 			}
+		}
+					
+		#contentWrapper {
+			padding: 25px 60px;
+			
+			h1 {
+				font-family: "headerText";
+				font-weight: normal;
+				font-size: 30px;
+			}
+			
+			h3 {
+				font-size: 21px;
+				font-weight: normal;
+				text-decoration: underline;
+				font-family: "bodyTextBold";
+				text-transform: none;
 				
+				a:link,
+				a:active,
+				a:visited {
+					color: @bodyText;
+				}
+			}
+			
+			a.headerlink {
+				padding: 0 0 0 10px;
+				color: @purple-accent;
+			}
+			
+			a:link,
+			a:active,
+			a:visited {
+				color: @purple-accent;
+			}
+			
+			.section {
+				margin: 15px 0 35px 0;
+			}
+			
+			ul {
+				list-style-type: none;
+				margin: 0 0 20px 15px;
+				
+				li {
+					background: url("@{bullet}") no-repeat left 6px;
+					padding: 3px 0 3px 20px;
+					
+					a {
+						color: @purple-accent;
+						font-family: "bodyTextBold";
+						
+						em {
+							font-style: normal;
+						}
+					}
+				}
+			}
+			
+			.search {
+				input[type="submit"]{
+					height: 31px;
+					margin: -10px 0 0 5px;
+					border-radius: 4px;
+				}
+				
+				input[type="text"] {
+					font-family: "bodyText";
+				}
+			}
 		}
 
 	}
+	
+	.footer {
+		padding: 15px 30px;
+		background-color: @footerBG;
+		color: @footerText;
+		border-top: 1px solid @gray-level3;
+		font-size: 14px;
+		
+		a:link,
+		a:active,
+		a:visited {
+			color: @gray-level1;
+		}
+	}
+		
 }
 

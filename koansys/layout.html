@@ -27,29 +27,42 @@
 
 <!--Navigation-->
 {%- macro relbar() %}
-	<div id="navigationWrapper">
-		<div id="navHeader"></div>
-		<ul id="navigation">
-		{%- for rellink in rellinks %}
-			<li class="right" {% if loop.first %}style="margin-right: 10px"{% endif %}>
-				<a href="{{ pathto(rellink[0]) }}" title="{{ rellink[1]|striptags|e }}" {{ accesskey(rellink[2]) }}>{{ rellink[3] }}</a>
-
-				{%- if not loop.first %}
-					{{ reldelim2 }}
-				{% endif %}
-			</li>
-		{%- endfor %}
-
-		{%- block rootrellink %}
-			<li class="shortTitle"><a href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a>{{ reldelim1 }}</li>
-		{%- endblock %}
-
-		{%- for parent in parents %}
-			<li class="parents"><a href="{{ parent.link|e }}" {% if loop.last %}{{ accesskey("U") }}{% endif %}>{{ parent.title }}</a>{{ reldelim1 }}</li>
-		{%- endfor %}
-
-		{%- block relbaritems %} {% endblock %}
-		</ul>
+	<div class="navbar" id="primary-nav-wrapper">
+		<div class="navbar-inner">
+			<div class="container">
+				<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+	
+				<div class="nav-collapse collapse">
+					<nav id="primary-nav">
+						<ul id="navigation" class="nav">
+							{%- for rellink in rellinks %}
+								<li class="right" {% if loop.first %}style="margin-right: 10px"{% endif %}>
+									<a href="{{ pathto(rellink[0]) }}" title="{{ rellink[1]|striptags|e }}" {{ accesskey(rellink[2]) }}>{{ rellink[3] }}</a>
+					
+									{%- if not loop.first %}
+										{{ reldelim2 }}
+									{% endif %}
+								</li>
+							{%- endfor %}
+					
+							{%- block rootrellink %}
+								<li class="shortTitle"><a href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a>{{ reldelim1 }}</li>
+							{%- endblock %}
+					
+							{%- for parent in parents %}
+								<li class="parents"><a href="{{ parent.link|e }}" {% if loop.last %}{{ accesskey("U") }}{% endif %}>{{ parent.title }}</a>{{ reldelim1 }}</li>
+							{%- endfor %}
+					
+							{%- block relbaritems %} {% endblock %}
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
 	</div>
 {%- endmacro %}
 
@@ -115,6 +128,20 @@
       };
     </script>
 	{%- set script_files = script_files + ["_static/default.js"] -%}
+	{%- set script_files = script_files + ["_static/js/jquery.js"] -%}
+	{%- set script_files = script_files + ["_static/bootstrap/js/bootstrap-transition.js"] -%}
+	{%- set script_files = script_files + ["_static/bootstrap/js/bootstrap-alert.js"] -%}
+	{%- set script_files = script_files + ["_static/bootstrap/js/bootstrap-modal.js"] -%}
+	{%- set script_files = script_files + ["_static/bootstrap/js/bootstrap-dropdown.js"] -%}
+	{%- set script_files = script_files + ["_static/bootstrap/js/bootstrap-scrollspy.js"] -%}
+	{%- set script_files = script_files + ["_static/bootstrap/js/bootstrap-tab.js"] -%}
+	{%- set script_files = script_files + ["_static/bootstrap/js/bootstrap-tooltip.js"] -%}
+	{%- set script_files = script_files + ["_static/bootstrap/js/bootstrap-popover.js"] -%}
+	{%- set script_files = script_files + ["_static/bootstrap/js/bootstrap-button.js"] -%}
+	{%- set script_files = script_files + ["_static/bootstrap/js/bootstrap-collapse.js"] -%}
+	{%- set script_files = script_files + ["_static/bootstrap/js/bootstrap-carousel.js"] -%}
+	{%- set script_files = script_files + ["_static/bootstrap/js/bootstrap-typeahead.js"] -%}
+
 
     {%- for scriptfile in script_files %}
    		<script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
@@ -197,48 +224,50 @@
 	</head>
 
 	<body>
-	<div id="bodyWrapper" class="container">
+		<div id="bodyWrapper" class="container">
 			<div id="headerWrapper" class="row">
 				<div id="banner"></div>
 			</div>
 	
-			<div id="bodyContainer">
+			<div id="bodyContainer" class="row">
 				{%- block header %}{% endblock %}
 
 				{%- block relbar1 %}
 					{{ relbar() }}
 				{% endblock %}
 
-				{%- block content %}
-					{%- block sidebar1 %}
-						{# possible location for sidebar #}
-					{% endblock %}
-
-					<div class="document">
-						{%- block document %}
-
-							<div class="documentwrapper">
-								{%- if render_sidebar %}
-									<div class="bodywrapper">
-								{%- endif %}
-
-								<div class="body">
-									{% block body %} {% endblock %}
-								</div>
-
-								{%- if render_sidebar %}
-									</div>
-								{%- endif %}
-							</div>
-						{%- endblock %}
-
-						{%- block sidebar2 %}
-							{{ sidebar() }}
+				<div id="contentWrapper">
+					{%- block content %}
+						{%- block sidebar1 %}
+							{# possible location for sidebar #}
 						{% endblock %}
-
-						<div class="clearer"></div>
-					</div>
-				{%- endblock %}
+	
+						<div class="document">
+							{%- block document %}
+	
+								<div class="documentwrapper">
+									{%- if render_sidebar %}
+										<div class="bodywrapper">
+									{%- endif %}
+	
+									<div class="body">
+										{% block body %} {% endblock %}
+									</div>
+	
+									{%- if render_sidebar %}
+										</div>
+									{%- endif %}
+								</div>
+							{%- endblock %}
+	
+							{%- block sidebar2 %}
+								{{ sidebar() }}
+							{% endblock %}
+	
+							<div class="clearer"></div>
+						</div>
+					{%- endblock %}
+				</div>
 
 				{%- block footer %}
 					<div class="footer">
