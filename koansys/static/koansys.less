@@ -1,6 +1,6 @@
 @import url('default.css');
-@import "../../../zw-uer/build/src/bootstrap/less/bootstrap.less";
-@import "../../../zw-uer/build/src/bootstrap/less/responsive.less";
+@import "../../../../build/src/bootstrap/less/bootstrap.less";
+@import "../../../../build/src/bootstrap/less/responsive.less";
 
 ///Default colors:
 	@white: #fff;
@@ -30,7 +30,8 @@
 ///Images:
 	@kdoc_banner: "images/kdoc_banner.png";
 	@navHeader: "images/navigate_header.png";
-	@bullet: "images/bullet.png";
+	@bullet1: "images/bullet1.gif";
+	@bullet2: "images/bullet2.png";
 	
 ///Fonts:
 @font-face {
@@ -193,15 +194,19 @@ body {
 			h1 {
 				font-family: "headerText";
 				font-weight: normal;
-				font-size: 30px;
+				font-size: 35px;
+			}
+			
+			h2 {
+				font-size: 27px;
+				font-weight: normal;
+				font-family: "bodyTextBold";
 			}
 			
 			h3 {
 				font-size: 21px;
 				font-weight: normal;
-				text-decoration: underline;
 				font-family: "bodyTextBold";
-				text-transform: none;
 				
 				a:link,
 				a:active,
@@ -226,37 +231,60 @@ body {
 			}
 			
 			ul {
+				list-style-image: url("@{bullet1}");
 				list-style-type: none;
-				margin: 0 0 20px 15px;
+				padding: 0 0 0 20px;
+				margin: 20px 0 0;
+				font-family: "bodyTextBold";
 				
 				li {
-					background: url("@{bullet}") no-repeat left 6px;
-					padding: 3px 0 3px 20px;
+					padding: 0 0 10px 0;
 					
-					a {
-						color: @purple-accent;
+					a:link,
+					a:active,
+					a:visited {
+						padding: 0 0 20px 0;
+						color: @bodyText;
 						font-family: "bodyTextBold";
+						font-size: 17px;
+					}
+				
+					ul {
+						margin: 5px 0 20px;
+						padding: 0 0 0 10px;
+						list-style-image: none;
 						
-						em {
-							font-style: normal;
+						li {
+							background: url("@{bullet2}") no-repeat left 6px;
+							padding: 3px 0 3px 20px;
+							
+							a:link,
+							a:active,
+							a:visited{
+								color: @purple-accent !important;
+								font-size: 15px;
+								
+								em {
+									font-style: normal;
+								}
+							}
 						}
 					}
 				}
-			}
-			
-			.search {
-				input[type="submit"]{
-					height: 31px;
-					margin: -10px 0 0 5px;
-					border-radius: 4px;
-				}
-				
-				input[type="text"] {
-					font-family: "bodyText";
+					
+				.search {
+					input[type="submit"]{
+						height: 31px;
+						margin: -10px 0 0 5px;
+						border-radius: 4px;
+					}
+					
+					input[type="text"] {
+						font-family: "bodyText";
+					}
 				}
 			}
 		}
-
 	}
 	
 	.footer {
