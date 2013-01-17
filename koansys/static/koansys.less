@@ -1,6 +1,12 @@
 @import url('default.css');
+//KOANSYS SPHINX REFS
+//@import "../../../zw-uer/build/src/bootstrap/less/bootstrap.less";
+//@import "../../../zw-uer/build/src/bootstrap/less/responsive.less";
+
+//UER REFS
 @import "../../../../build/src/bootstrap/less/bootstrap.less";
 @import "../../../../build/src/bootstrap/less/responsive.less";
+
 
 ///Default colors:
 	@white: #fff;
@@ -16,6 +22,7 @@
 	@footerText: #2D2D2D;
 	@contentBG: #acabab;
 	@bodyText: #383737;
+	@h1Text: #212121;
 	
 	@bottomNav: #261f30;
 	@topNav: #423b4d;
@@ -23,6 +30,7 @@
 	@nav_bottomBtn: #393343;
 	@nav_topBtn: #564D64;
 	@nav_btnBorder: #474747l;
+	@navItemBorder: #6b6279;
 
 	@green-accent: #8cc63f;
 	@purple-accent: #483F54;
@@ -119,17 +127,20 @@ body {
 				box-shadow:0 0 0 0;
 				
 				#primary-nav {
-					margin: 8px 0 0;
-					padding: 0 14px;
+					margin: 6px 0 0;
+					padding: 0 40px;
 					overflow: hidden;
 					
 					ul {
 						list-style-type: none;
 						
 						li {
-							line-height: 7px;
-							margin: 0 0 0 10px;
+							line-height: 30px;
+							margin: 0 !important;
 							text-align: left;
+							padding: 0 20px 0 0;
+							color: @navItemBorder;
+							font-size: 24px;
 							
 							a:link,
 							a:active,
@@ -139,6 +150,8 @@ body {
 								font-family: "headerText";
 								font-weight: normal;
 								text-shadow: 0 0 0 transparent;
+								padding: 0 20px 0 0;
+								display: inline-block;
 							}
 							
 							a:hover {
@@ -155,6 +168,7 @@ body {
 					ul {
 						li {
 							padding: 2px 0;
+
 	
 							a:hover {
 								background-color: transparent;
@@ -195,18 +209,25 @@ body {
 				font-family: "headerText";
 				font-weight: normal;
 				font-size: 35px;
+				color: @h1Text;
+				
+				tt {
+					font-family: "headerText";
+				}
 			}
 			
 			h2 {
-				font-size: 27px;
+				font-size: 25px;
 				font-weight: normal;
 				font-family: "bodyTextBold";
+				text-transform: uppercase;
 			}
 			
-			h3 {
+			h3, h4 {
 				font-size: 21px;
 				font-weight: normal;
 				font-family: "bodyTextBold";
+				text-decoration: underline;
 				
 				a:link,
 				a:active,
@@ -215,9 +236,18 @@ body {
 				}
 			}
 			
+			p {
+				margin: 0 0 20px 0;
+			}
+			
 			a.headerlink {
-				padding: 0 0 0 10px;
+				padding: 0 0 0 6px;
 				color: @purple-accent;
+				
+				&:hover {
+					color: @gray-level1;
+					text-decoration: none;
+				}
 			}
 			
 			a:link,
@@ -227,14 +257,41 @@ body {
 			}
 			
 			.section {
-				margin: 15px 0 35px 0;
+				margin: 15px 0 20px 0;
+				
+				blockquote {
+					border-left: 0;
+					
+					ol {
+						li {
+							a:link,
+							a:active,
+							a:visited {
+								color: @bodyText;
+								font-family: "bodyTextBold";
+							}
+						}
+					}
+					
+					blockquote {
+						ol {
+							li {
+								a:link,
+								a:active,
+								a:visited {
+									font-family: "bodyText";
+								}
+							}
+						}
+					}
+				}
 			}
-			
+							
 			ul {
 				list-style-image: url("@{bullet1}");
 				list-style-type: none;
 				padding: 0 0 0 20px;
-				margin: 20px 0 0;
+				margin: 0 0 20px 0;
 				font-family: "bodyTextBold";
 				
 				li {
@@ -250,7 +307,7 @@ body {
 					}
 				
 					ul {
-						margin: 5px 0 20px;
+						margin: 5px 0 0;
 						padding: 0 0 0 10px;
 						list-style-image: none;
 						
@@ -271,7 +328,16 @@ body {
 						}
 					}
 				}
-					
+				
+			}
+			
+			#searchbox {
+				margin: 15px 0 0;
+				
+				h3 {
+					margin: 0 0 5px 0;
+				}
+				
 				.search {
 					input[type="submit"]{
 						height: 31px;
@@ -281,6 +347,59 @@ body {
 					
 					input[type="text"] {
 						font-family: "bodyText";
+					}
+				}
+			}
+			
+			#glossary {
+				dl.glossary {
+					dt {
+						font-size: 18px;
+						font-weight: normal;
+						font-family: "bodyTextBold";
+					}
+						
+					dd {
+						margin: 5px 0 25px 0;
+						font-style: italic;
+						font-size: 15px;
+					}
+				}
+			}
+			
+			.genindex-jumpbox {
+				margin: 3px 0 20px 0;
+				font-size: 9px;
+				color: transparent;
+				
+				a {
+					font-family: "headerText";
+					font-size: 24px;
+					text-transform: lowercase;
+					
+					strong {
+						font-weight: normal;
+					}
+					
+					&:hover {
+						color: @gray-level1;
+						text-decoration: none;
+					}
+				}
+			}
+			
+			table.genindextable {
+				margin: -5px 0 0;
+				width: 85%;
+				
+				td {
+					dl {
+						margin: 0 0 20px 0;
+						
+						dt {
+							font-weight: normal;
+							padding: 0 20px 0 0;
+						}
 					}
 				}
 			}
