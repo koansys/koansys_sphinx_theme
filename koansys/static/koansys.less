@@ -35,6 +35,8 @@
 	@navItemBorder: #6b6279;
 
 	@green-accent: #8cc63f;
+	@light-green-accent: #deebcc;
+	@green-border: #dcf1c0;
 	@purple-accent: #483F54;
 
 ///Images:
@@ -44,6 +46,9 @@
 	@bullet2: "images/bullet2.png";
 	@active_arrow: "images/active_arrow.png";
 	@parent_arrow: "images/parent_arrow.png";
+	@parent_arrow_active: "images/parent_arrow_active.png";
+	@sub_arrow: "images/sub_arrow.png";
+	@sub_arrow_active: "images/sub_arrow_active.png";
 	
 ///Fonts:
 @font-face {
@@ -250,6 +255,11 @@ body {
 				li {
 					border-top: 1px solid @gray-level1;
 					
+					tt {
+						font-family: "bodyText";
+						font-size: 15px;
+					}
+					
 					a:link,
 					a:active,
 					a:visited{
@@ -258,23 +268,71 @@ body {
 						font-size: 15px;
 					}
 					
-					&:hover {
-					 	background-color: @green-accent;
+					a:hover {
+						background: url("@{active_arrow}") no-repeat 97% 7px @green-accent;
+						color: @white !important;
+						text-shadow: 1px 1px 2px @gray-level4;
+						text-decoration: none;
 					}
-					
-					&:first-child {
-						border: 0;
-					}
-					
-					ul {
-						li {
-							padding: 0 0 0 40px;
-						}
-					}
+										
 				}
 				
 				li.hasChildren {
-					background: url("@{parent_arrow}") no-repeat 208px 11px;
+					a:link,
+					a:active,
+					a:visited {
+						background: url("@{parent_arrow}") no-repeat 97% 11px;
+					}
+					
+					a:hover {
+						background: url("@{parent_arrow_active}") no-repeat 97% 11px @green-accent;
+						border-bottom: 1px solid @green-border;
+					}
+					
+					ul li {
+						a:link,
+						a:active,
+						a:visited {
+							padding: 6px 10px 6px 40px;
+							background: url("@{sub_arrow}") no-repeat 22px 11px;
+							border-bottom: 0;
+						}
+						
+						a:hover{
+							background: url("@{sub_arrow_active}") no-repeat 22px 11px @green-accent;
+						}
+
+					}
+					
+				}
+				
+				li.hasChildren.active {
+					a:link,
+					a:active,
+					a:visited {
+						background: url("@{parent_arrow_active}") no-repeat 97% 11px @green-accent;
+						border-bottom: 0;
+					}
+					
+					li {
+						a:link,
+						a:active,
+						a:visited {
+							background: url("@{sub_arrow}") no-repeat 22px 11px @light-green-accent;
+						}
+						
+						a:hover{
+							background: url("@{sub_arrow_active}") no-repeat 22px 11px @green-accent;
+						}
+					}
+					
+					li.active {
+						a:link,
+						a:active,
+						a:visited {
+							background: url("@{sub_arrow_active}") no-repeat 22px 11px @green-accent;
+						}
+					}
 				}
 					
 			}
@@ -293,18 +351,12 @@ body {
 		}
 		
 		.sidebarNav ul > .active > a {
-			background: url("@{active_arrow}") no-repeat 215px 7px @green-accent;
+			background: url("@{active_arrow}") no-repeat 97% 7px @green-accent;
 			color: @white !important;
 			text-shadow: 1px 1px 2px @gray-level4;
 			border-bottom: 1px solid @gray-level2;
-			font-size: 17px !important;
 		}
 		
-		
-		.sidebarNav > li > a:hover {
-			background-color: #f5f5f5;
-		}
-
 
 		/**--MAIN BODY--**/
 		.span8 {
@@ -574,12 +626,12 @@ body {
 ------------------------- */
 @media (min-width: 1200px) {
 	.sidebarNav {
-		width: 235px;
+		width: 275px;
 		margin: 0 50px 70px 0;
 	}
 	
 	.sidebarNav > li > a {
-		width: 220px \9; /* Override the previous IE8-9 hack */
+		width: 260px \9; /* Override the previous IE8-9 hack */
 	}
 }
 
@@ -589,7 +641,7 @@ body {
 /* When affixed, space properly */
 	.sidebarNav {
 		top: 0;
-		width: 235px;
+		width: 270px;
 		margin: 0 50px 70px 0;
 	}
 }

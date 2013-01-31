@@ -29,11 +29,39 @@ jQuery(function(){
 		jQuery(this).attr("class", "");
 	});
 	
+	jQuery(".sidebarNav ul").each(function() {
+		if(jQuery(this).children().length == 0) {
+			jQuery(this).remove();
+		}
+	});
+
 	jQuery(".sidebarNav ul li").each(function(index) {
 		if(jQuery(this).children("ul").length > 0) {
 			jQuery(this).addClass("hasChildren");
 		}
 	});
+		
+	 //Firefox
+	jQuery('#bodyContainer').bind('DOMMouseScroll', function(e) {
+		jQuery(".sidebarNav .hasChildren li").each(function() {
+			if(jQuery(this).hasClass("active")) {
+				jQuery(this).parents(".hasChildren").addClass("active");
+			}
+		});
+	});
+	
+	//IE, Opera, Webkit
+	jQuery('#bodyContainer').bind('mousewheel', function(e){
+		jQuery(".sidebarNav .hasChildren li").each(function() {
+			if(jQuery(this).hasClass("active")) {
+				jQuery(this).parents(".hasChildren").addClass("active");
+			}
+		});
+	});
+	
+	if(jQuery(".sidebarNav li.header").length == 0 ) {
+		jQuery(".sidebarWrapper").remove();
+	}
 		
 	var $window = $(window);
     jQuery('.sidebarNav').affix({
