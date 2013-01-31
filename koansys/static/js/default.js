@@ -24,7 +24,7 @@ jQuery(function(){
 	var newLink = "#" + linkTxt;
 	
 	firstLink.attr("href", newLink);
-	
+		
 	jQuery(".sidebarNav ul li").each(function() {
 		jQuery(this).attr("class", "");
 	});

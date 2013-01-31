@@ -49,6 +49,7 @@
 	@parent_arrow_active: "images/parent_arrow_active.png";
 	@sub_arrow: "images/sub_arrow.png";
 	@sub_arrow_active: "images/sub_arrow_active.png";
+	@btn_submit: "images/btn_submit.png";
 	
 ///Fonts:
 @font-face {
@@ -142,6 +143,7 @@ body {
 					
 					ul {
 						list-style-type: none;
+						float: none;
 						
 						li {
 							line-height: 30px;
@@ -169,6 +171,18 @@ body {
 							}
 								
 						}
+						
+						li.shortTitle {
+							a:link,
+							a:active,
+							a:visited {
+								padding: 0 10px 0 0;
+							}
+						}
+						
+						li.right {
+							float: right;
+						}
 					}
 				}
 				
@@ -182,6 +196,10 @@ body {
 							a:hover {
 								background-color: transparent;
 							}
+						}
+						
+						li.right {
+							float: none !important;
 						}
 					}
 				}
@@ -269,7 +287,7 @@ body {
 					}
 					
 					a:hover {
-						background: url("@{active_arrow}") no-repeat 97% 7px @green-accent;
+						background: url("@{active_arrow}") no-repeat 96% 7px @green-accent;
 						color: @white !important;
 						text-shadow: 1px 1px 2px @gray-level4;
 						text-decoration: none;
@@ -281,11 +299,11 @@ body {
 					a:link,
 					a:active,
 					a:visited {
-						background: url("@{parent_arrow}") no-repeat 97% 11px;
+						background: url("@{parent_arrow}") no-repeat 96% 11px;
 					}
 					
 					a:hover {
-						background: url("@{parent_arrow_active}") no-repeat 97% 11px @green-accent;
+						background: url("@{parent_arrow_active}") no-repeat 96% 11px @green-accent;
 						border-bottom: 1px solid @green-border;
 					}
 					
@@ -293,13 +311,13 @@ body {
 						a:link,
 						a:active,
 						a:visited {
-							padding: 6px 10px 6px 40px;
-							background: url("@{sub_arrow}") no-repeat 22px 11px;
+							padding: 6px 10px 6px 45px;
+							background: url("@{sub_arrow}") no-repeat 28px 11px;
 							border-bottom: 0;
 						}
 						
 						a:hover{
-							background: url("@{sub_arrow_active}") no-repeat 22px 11px @green-accent;
+							background: url("@{sub_arrow_active}") no-repeat 28px 11px @green-accent;
 						}
 
 					}
@@ -310,7 +328,7 @@ body {
 					a:link,
 					a:active,
 					a:visited {
-						background: url("@{parent_arrow_active}") no-repeat 97% 11px @green-accent;
+						background: url("@{parent_arrow_active}") no-repeat 96% 11px @green-accent;
 						border-bottom: 0;
 					}
 					
@@ -318,11 +336,11 @@ body {
 						a:link,
 						a:active,
 						a:visited {
-							background: url("@{sub_arrow}") no-repeat 22px 11px @light-green-accent;
+							background: url("@{sub_arrow}") no-repeat 28px 11px @light-green-accent;
 						}
 						
 						a:hover{
-							background: url("@{sub_arrow_active}") no-repeat 22px 11px @green-accent;
+							background: url("@{sub_arrow_active}") no-repeat 28px 11px @green-accent;
 						}
 					}
 					
@@ -330,7 +348,7 @@ body {
 						a:link,
 						a:active,
 						a:visited {
-							background: url("@{sub_arrow_active}") no-repeat 22px 11px @green-accent;
+							background: url("@{sub_arrow_active}") no-repeat 28px 11px @green-accent;
 						}
 					}
 				}
@@ -351,7 +369,7 @@ body {
 		}
 		
 		.sidebarNav ul > .active > a {
-			background: url("@{active_arrow}") no-repeat 97% 7px @green-accent;
+			background: url("@{active_arrow}") no-repeat 96% 7px @green-accent;
 			color: @white !important;
 			text-shadow: 1px 1px 2px @gray-level4;
 			border-bottom: 1px solid @gray-level2;
@@ -360,6 +378,8 @@ body {
 
 		/**--MAIN BODY--**/
 		.span8 {
+			padding: 0 0 0 10px;
+			
 			h1 {
 				font-family: "headerText";
 				font-weight: normal;
@@ -369,6 +389,10 @@ body {
 				tt {
 					font-family: "headerText";
 				}
+			}
+			
+			h1#index {
+				margin: 20px 0 10px 0;
 			}
 			
 			h2 {
@@ -432,6 +456,80 @@ body {
 				padding: 0;
 			}
 			
+			#prevNextWrapper {		
+				overflow: hidden;
+						
+				div {
+					float: left;
+					margin: 15px 0 25px;
+					
+					a:link,
+					a:active,
+					a:visited {
+						font-family: "headerText";
+						color: @bodyText;
+						font-size: 22px;
+						
+						tt {
+							font-family: "headerText";
+						}
+					}
+					
+					a:hover {
+						text-decoration: none;
+						color: @purple-accent;
+					}
+				}
+								
+				#nextTopic {
+					margin: 15px 0 25px 15px;
+				}
+				
+				#nextTopic.noPrev {
+					margin: 15px 0 25px 0;
+				}
+				
+				.divider {
+					position: relative;
+					top: -1px;
+					font-size: 26px;
+					padding: 0 15px 0 4px;
+				}
+			}
+			
+			#searchbox {								
+				form.search {
+					margin: 0;
+					
+					input[type="submit"]{
+						height: 32px;
+						width: 32px;
+						border: 0px;
+						text-transform: lowercase;
+						margin: -10px 0 0 5px;
+						background:url("@{btn_submit}");
+						font-family: "headerText";
+						color: @purple-accent;
+						font-size: 20px;
+					}
+					
+					#searchFor {
+						font-family: "headerText";
+						font-size: 18px;
+						text-transform: lowercase;
+					}
+					
+				}
+				
+				.searchtip {
+					font-size: 12px;
+					margin: -3px 0 0;
+					font-style: italic;
+					color: @gray-level3;
+				}
+				
+			}
+			
 			section {
 				margin: 30px 0;
 				
@@ -443,7 +541,6 @@ body {
 							a:link,
 							a:active,
 							a:visited {
-								color: @bodyText;
 								font-family: "bodyTextBold";
 							}
 						}
@@ -462,27 +559,7 @@ body {
 					}
 				}
 			}
-									
-			#searchbox {
-				margin: 15px 0 0;
-				
-				h3 {
-					margin: 0 0 5px 0;
-				}
-				
-				.search {
-					input[type="submit"]{
-						height: 31px;
-						margin: -10px 0 0 5px;
-						border-radius: 4px;
-					}
-					
-					input[type="text"] {
-						font-family: "bodyText";
-					}
-				}
-			}
-			
+												
 			#glossary {
 				dl.glossary {
 					dt {
@@ -617,6 +694,7 @@ body {
 	}
 		
 }
+
 
 
 /* Responsive
