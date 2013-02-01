@@ -33,6 +33,7 @@
 	@nav_topBtn: #564D64;
 	@nav_btnBorder: #474747l;
 	@navItemBorder: #6b6279;
+	@navItem: #808080;
 
 	@green-accent: #8cc63f;
 	@light-green-accent: #deebcc;
@@ -242,6 +243,7 @@ body {
 			background-color: @sidebarBG;
 			border: 1px solid @gray-level2;
 			list-style-type: none;
+			width: 215px;
 			
 			li.header {
 				padding: 5px;
@@ -281,7 +283,7 @@ body {
 					a:link,
 					a:active,
 					a:visited{
-						color: #808080;
+						color: @navItem;
 						padding: 6px 10px 6px 20px;
 						font-size: 15px;
 					}
@@ -307,7 +309,7 @@ body {
 						border-bottom: 1px solid @green-border;
 					}
 					
-					ul li {
+					li {
 						a:link,
 						a:active,
 						a:visited {
@@ -322,14 +324,24 @@ body {
 
 					}
 					
+					li.active {
+						a:link,
+						a:active,
+						a:visited {
+							background: url("@{sub_arrow_active}") no-repeat 28px 11px @green-accent;
+						}
+					}
+					
 				}
 				
-				li.hasChildren.active {
+				li.hasChildren.active, li.hasChildren.child-active {
 					a:link,
 					a:active,
 					a:visited {
 						background: url("@{parent_arrow_active}") no-repeat 96% 11px @green-accent;
 						border-bottom: 0;
+						color: @white;
+						text-shadow: 1px 1px 2px @gray-level4;
 					}
 					
 					li {
@@ -337,10 +349,13 @@ body {
 						a:active,
 						a:visited {
 							background: url("@{sub_arrow}") no-repeat 28px 11px @light-green-accent;
+							color: @navItem;
+							text-shadow: 0 0 0 transparent;
 						}
 						
 						a:hover{
 							background: url("@{sub_arrow_active}") no-repeat 28px 11px @green-accent;
+							text-shadow: 1px 1px 2px @gray-level4;
 						}
 					}
 					
@@ -349,6 +364,7 @@ body {
 						a:active,
 						a:visited {
 							background: url("@{sub_arrow_active}") no-repeat 28px 11px @green-accent;
+							text-shadow: 1px 1px 2px @gray-level4;
 						}
 					}
 				}
@@ -365,7 +381,7 @@ body {
 		.sidebarNav li > a {
 			display: block;
 			padding: 0;
-			width: 190px \9;
+			width: 190px \9;		
 		}
 		
 		.sidebarNav ul > .active > a {
@@ -396,7 +412,7 @@ body {
 			}
 			
 			h2 {
-				font-size: 25px;
+				font-size: 23px;
 				font-weight: normal;
 				font-family: "bodyTextBold";
 				text-transform: uppercase;
@@ -558,6 +574,10 @@ body {
 						}
 					}
 				}
+				
+				.section {
+					margin: 0 0 0 20px;
+				}
 			}
 												
 			#glossary {
@@ -704,23 +724,22 @@ body {
 ------------------------- */
 @media (min-width: 1200px) {
 	.sidebarNav {
-		width: 275px;
-		margin: 0 50px 70px 0;
+		width: 258px !important;
 	}
 	
 	.sidebarNav > li > a {
-		width: 260px \9; /* Override the previous IE8-9 hack */
+		width: 230px \9; /* Override the previous IE8-9 hack */
 	}
 }
 
 /* Desktop
 ------------------------- */
 @media (max-width: 980px) {
-/* When affixed, space properly */
 	.sidebarNav {
 		top: 0;
-		width: 270px;
-		margin: 0 50px 70px 0;
+		width: 218px !important;
+		margin-top: 30px;
+		margin-right: 0;
 	}
 }
 
@@ -729,8 +748,8 @@ body {
 @media (min-width: 768px) and (max-width: 979px) {
 	/* Adjust sidenav width */
 	.sidebarNav {
-		width: 150px;
-		margin: 0 50px 70px 0;
+		width: 166px !important;
+		margin-top: 20px;
 	}
 	
 	.sidebarNav.affix {
@@ -744,13 +763,13 @@ body {
 
 	/* Sidenav */
 	.sidebarNav {
-		width: auto;
-		margin: 0 50px 70px 0;
+		width: auto !important;
+		margin-bottom: 20px;
 	}
 	
 	.sidebarNav.affix {
 		position: static;
-		width: auto;
+		width: auto !important;
 		top: 0;
 	}
 }
